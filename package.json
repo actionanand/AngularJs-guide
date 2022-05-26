@@ -1,0 +1,28 @@
+{
+  "name": "angularjs-guide",
+  "version": "1.0.0",
+  "description": "This repo is the practice repo of Angular JS",
+  "main": "index.js",
+  "scripts": {
+    "serve": "webpack serve --mode=development",
+    "build": "webpack --mode=production",
+    "deploy": "gh-pages -d public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/actionanand/angularjs-guide"
+  },
+  "author": "Anand Raja",
+  "license": "ISC",
+  "keywords": [],
+  "dependencies": {
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "gh-pages": "^4.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "webpack-dev-server": "^4.9.0"
+  }
+}

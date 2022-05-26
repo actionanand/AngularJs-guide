@@ -1,1 +1,0 @@
-angular.module("angularApp",[]).controller("mainController",["$scope",function(l){}]);

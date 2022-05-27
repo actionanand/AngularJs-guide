@@ -17,6 +17,14 @@ app.controller('mainController', ['$scope', '$log', '$filter', '$timeout', funct
   $scope.lowercaseHandle = function() {
     return $filter('lowercase')($scope.handle);
   }
+
+  setTimeout(function() {
+    // to make angular know about the changes and apply.digest loop
+    $scope.$apply(function() { 
+      $scope.handle = 'New-Handle';
+    });
+  }, 5000);
+
 }]);
 
 var searchPeople = function(firstName, lastName, Height, age, occupation) {

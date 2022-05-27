@@ -33,7 +33,7 @@
 
     <div class="container">
       <div ng-controller="mainController">
-        <h2>{{ 'Hello ' + name }}, How are you?</h2>
+        <h2 ng-cloak>{{ 'Hello ' + name }}, How are you?</h2>
         <form name="myForm">
           <label>
             Enter text:
@@ -44,9 +44,35 @@
             <div ng-message="email" class="alert alert-danger">This field must be a valid email address.</div>
             <div ng-message="maxlength" class="alert alert-danger">This field can be at most 15 characters long.</div>
           </div>
-        </form>
-      </div>
-		</div>
 
+          <div>
+            <label> What's your twitter handle? </label>
+            <input type="text" ng-model="handle">
+          </div>
+          <div class="alert" ng-if="handle.length !== charaters" 
+            ng-class="{'alert-warning': handle.length > charaters, 'alert-danger': handle.length < charaters}">
+            Twitter handle should be at least {{ charaters }} characters!
+          </div>
+<!-- ng-show and ng-hide won't remove from dom, but it'll changes 'display' css property to 'none'
+  if ng-show is not true angular will add ng-hide and vice-versa -->
+
+          <!-- <div class="alert alert-warning" ng-show="handle.length !== charaters">
+            Twitter handle should be at least {{ charaters }} characters!
+          </div> -->
+        </form>
+        <hr>
+        <h2>www.twitter.com/{{ lowercaseHandle() }}</h2>
+        <div>
+          <h3>Rules!</h3>
+          <ul>
+            <li ng-repeat="rule in rules">
+              {{ rule.ruleName }}
+            </li>
+          </ul>
+          <button ng-click="alertClick()">Click Me</button>
+        </div>
+      </div>
+
+		</div>
   </body>
 </html>

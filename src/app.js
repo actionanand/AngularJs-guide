@@ -25,6 +25,18 @@ app.controller('mainController', ['$scope', '$log', '$filter', '$timeout', funct
     });
   }, 5000);
 
+  $scope.charaters = 5;
+
+  $scope.rules = [
+    {ruleName: 'Must be 5 characters'},
+    {ruleName: 'Must not be used else where'},
+    {ruleName: 'Must be cool'}
+  ];
+
+  $scope.alertClick = function() {
+    alert('You clicked me!');
+  }
+
 }]);
 
 var searchPeople = function(firstName, lastName, Height, age, occupation) {

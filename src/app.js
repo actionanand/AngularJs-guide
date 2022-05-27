@@ -11,6 +11,12 @@ app.controller('mainController', ['$scope', '$log', '$filter', '$timeout', funct
   $timeout(function() {
     $scope.name = 'AR';
   }, 3000);
+
+  $scope.handle = '';
+
+  $scope.lowercaseHandle = function() {
+    return $filter('lowercase')($scope.handle);
+  }
 }]);
 
 var searchPeople = function(firstName, lastName, Height, age, occupation) {

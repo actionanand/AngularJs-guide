@@ -1,7 +1,7 @@
 // MODULE
-var angularApp = angular.module('angularApp', []);
+var app = angular.module('angularApp', []);
 
 // CONTROLLERS
-angularApp.controller('mainController', ['$scope', function ($scope) {
+app.controller('mainController', ['$scope', function ($scope) {
     
 }]);

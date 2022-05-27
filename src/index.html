@@ -59,6 +59,7 @@
           <!-- <div class="alert alert-warning" ng-show="handle.length !== charaters">
             Twitter handle should be at least {{ charaters }} characters!
           </div> -->
+          
         </form>
         <hr>
         <h2>www.twitter.com/{{ lowercaseHandle() }}</h2>
@@ -66,10 +67,11 @@
           <h3>Rules!</h3>
           <ul>
             <li ng-repeat="rule in rules">
-              {{ rule.ruleName }}
+              {{ rule.RuleName }}
             </li>
           </ul>
-          <button ng-click="alertClick()">Click Me</button>
+          Add new rule: <input type="text" ng-model="newRule">
+          <a class="btn btn-success" ng-click="addRule1()"> Add Rule </a>
         </div>
       </div>
 

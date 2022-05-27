@@ -1,1 +1,1 @@
-angular.module("angularApp",[]).controller("mainController",["$scope",function(o){console.log(o)}]);
+angular.module("angularApp",["ngMessages"]).controller("mainController",["$scope","$log","$filter",function(n,e,a){n.name="Anand Raja",console.log(n),n.filteredText=a("uppercase")(n.name),e.warn(n.filteredText)}]),console.log(angular.injector().annotate((function(n,e,a,o,l){return"Anand Raja"})));

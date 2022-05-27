@@ -2,7 +2,7 @@
 var app = angular.module('angularApp', ['ngMessages']);
 
 // CONTROLLERS
-app.controller('mainController', ['$scope', '$log', '$filter', '$timeout', function ($scope, $log, $filter, $timeout) {
+app.controller('mainController', ['$scope', '$log', '$filter', '$timeout', '$http', function ($scope, $log, $filter, $timeout, $http) {
   $scope.name = 'Anand Raja';
   
   $scope.filteredText = $filter('uppercase')($scope.name);
@@ -33,9 +33,6 @@ app.controller('mainController', ['$scope', '$log', '$filter', '$timeout', funct
   //   {RuleName: 'Must be cool'}
   // ];
 
-  $scope.alertClick = function() {
-    alert('You clicked me!');
-  }
 
   // XML http req
   // if result didn't arrive, use this code (with $apply)
@@ -54,12 +51,52 @@ app.controller('mainController', ['$scope', '$log', '$filter', '$timeout', funct
 
   rulesReq.onreadystatechange = function () {
     if (rulesReq.readyState == 4 && rulesReq.status == 200) {
-      $scope.rules = JSON.parse(rulesReq.responseText);
+      $scope.rules1 = JSON.parse(rulesReq.responseText);
     }
   }
 
   rulesReq.open("GET", url, true);
   rulesReq.send();
+
+  // using $http service
+
+  $http.get(url).then(successCallback, errorCallback);
+
+  function successCallback(response) {
+    $scope.rules = response.data;
+  }
+
+  function errorCallback(error) {
+    console.log('error occurred!');
+    console.log(error.data);
+    console.log(error.status);
+  }
+
+  // http post call
+
+  $scope.newRule = '';
+
+  $scope.addRule = function() {
+    $http.post('/post/api', { newRule: $scope.newRule })
+      .then(function(resp){
+        $scope.rules = resp;
+        $scope.newRule = '';
+      }, function(error) {
+        console.log(error.data);
+      });
+  }
+
+
+  // temp adj to post call
+  $scope.myId = 3;
+
+  $scope.addRule1 = function() {
+    $scope.myId += 1;
+    var newRuleObj = { RuleName: $scope.newRule, ID: $scope.myId }
+
+    $scope.rules.push(newRuleObj);
+    $scope.newRule = '';
+  }
 
 }]);
 

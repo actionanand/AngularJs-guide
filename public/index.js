@@ -1,1 +1,1 @@
-angular.module("angularApp",[]).controller("mainController",["$scope",function(l){}]);
+angular.module("angularApp",[]).controller("mainController",["$scope",function(o){console.log(o)}]);

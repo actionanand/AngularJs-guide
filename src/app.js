@@ -1,5 +1,20 @@
 // MODULE
-var app = angular.module('angularApp', ['ngMessages']);
+var app = angular.module('angularApp', ['ngRoute', 'ngMessages']);
+
+app.config(function($routeProvider){
+
+  $routeProvider
+    .when('/', {
+      templateUrl: 'pages/main.html',
+      controller: 'mainController'
+    })
+    .when('/second', {
+      templateUrl: 'pages/second.html',
+      controller: 'secondController'
+    })
+
+});
+
 
 // CONTROLLERS
 app.controller('mainController', ['$scope', '$log', '$filter', '$timeout', '$http', function ($scope, $log, $filter, $timeout, $http) {
@@ -97,6 +112,10 @@ app.controller('mainController', ['$scope', '$log', '$filter', '$timeout', '$htt
     $scope.rules.push(newRuleObj);
     $scope.newRule = '';
   }
+
+}]);
+
+app.controller('secondController', ['$scope', '$log', function($scope, $log) {
 
 }]);
 

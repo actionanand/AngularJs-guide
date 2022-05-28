@@ -11,6 +11,7 @@
 
     <!-- load angular via CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.8.2/angular-route.min.js"></script>
     <script src="https://code.angularjs.org/1.8.2/angular-messages.min.js"></script>
 
   </head>
@@ -24,7 +25,10 @@
           </div>
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <a href="#"><i class="fa fa-home"></i> Home</a>
+              <a href="#!"><i class="fa fa-home"></i> Home</a>
+            </li>
+            <li>
+              <a href="#!/second"> Second </a>
             </li>
           </ul>
         </div>
@@ -73,6 +77,10 @@
           Add new rule: <input type="text" ng-model="newRule">
           <a class="btn btn-success" ng-click="addRule1()"> Add Rule </a>
         </div>
+      </div>
+
+      <div ng-view>
+
       </div>
 
 		</div>

@@ -4,11 +4,18 @@ var app = angular.module('angularApp', ['ngRoute', 'ngMessages']);
 app.config(['$routeProvider', function ($routeProvider){
 
   $routeProvider
+
     .when('/', {
       templateUrl: 'pages/main.html',
       controller: 'mainController'
     })
-    .when('/second', {
+
+    .when('/second/', {
+      templateUrl: 'pages/second.html',
+      controller: 'secondController'
+    })
+
+    .when('/second/:id', {
       templateUrl: 'pages/second.html',
       controller: 'secondController'
     })
@@ -115,8 +122,8 @@ app.controller('mainController', ['$scope', '$log', '$filter', '$timeout', '$htt
 
 }]);
 
-app.controller('secondController', ['$scope', '$log', function($scope, $log) {
-  $scope.name = 'Hello world!';
+app.controller('secondController', ['$scope', '$log', '$routeParams', function($scope, $log, $routeParams) {
+  $scope.name = $routeParams.id || 'default page';
   $log.log($scope.name);
 }]);
 

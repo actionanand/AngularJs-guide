@@ -4,16 +4,13 @@
     <title>AngularJS Guide</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta charset="UTF-8">
-
     <!-- load bootstrap and fontawesome via CDN -->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="styles.css">
-
     <!-- load angular via CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="https://code.angularjs.org/1.8.2/angular-route.min.js"></script>
     <script src="https://code.angularjs.org/1.8.2/angular-messages.min.js"></script>
-
   </head>
   <body>
 
@@ -48,41 +45,11 @@
             <div ng-message="email" class="alert alert-danger">This field must be a valid email address.</div>
             <div ng-message="maxlength" class="alert alert-danger">This field can be at most 15 characters long.</div>
           </div>
-
-          <div>
-            <label> What's your twitter handle? </label>
-            <input type="text" ng-model="handle">
-          </div>
-          <div class="alert" ng-if="handle.length !== charaters" 
-            ng-class="{'alert-warning': handle.length > charaters, 'alert-danger': handle.length < charaters}">
-            Twitter handle should be only {{ charaters }} characters!
-          </div>
-<!-- ng-show and ng-hide won't remove from dom, but it'll changes 'display' css property to 'none'
-  if ng-show is not true angular will add ng-hide and vice-versa -->
-
-          <!-- <div class="alert alert-warning" ng-show="handle.length !== charaters">
-            Twitter handle should be at least {{ charaters }} characters!
-          </div> -->
-          
         </form>
-        <hr>
-        <h2>www.twitter.com/{{ lowercaseHandle() }}</h2>
-        <div>
-          <h3>Rules!</h3>
-          <ul>
-            <li ng-repeat="rule in rules">
-              {{ rule.RuleName }}
-            </li>
-          </ul>
-          Add new rule: <input type="text" ng-model="newRule">
-          <a class="btn btn-success" ng-click="addRule1()"> Add Rule </a>
-        </div>
       </div>
-
-      <div ng-view>
-
-      </div>
-
+<!-- To bind the html pages -->
+      <div ng-view> </div>
+      
 		</div>
   </body>
 </html>

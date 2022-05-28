@@ -116,7 +116,8 @@ app.controller('mainController', ['$scope', '$log', '$filter', '$timeout', '$htt
 }]);
 
 app.controller('secondController', ['$scope', '$log', function($scope, $log) {
-
+  $scope.name = 'Hello world!';
+  $log.log($scope.name);
 }]);
 
 var searchPeople = function(firstName, lastName, Height, age, occupation) {

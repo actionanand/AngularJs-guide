@@ -1,7 +1,7 @@
 // MODULE
 var app = angular.module('angularApp', ['ngRoute', 'ngMessages']);
 
-app.config(function($routeProvider){
+app.config(['$routeProvider', function ($routeProvider){
 
   $routeProvider
     .when('/', {
@@ -13,7 +13,7 @@ app.config(function($routeProvider){
       controller: 'secondController'
     })
 
-});
+}]);
 
 
 // CONTROLLERS

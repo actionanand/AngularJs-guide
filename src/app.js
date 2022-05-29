@@ -149,6 +149,19 @@ app.controller('secondController', ['$scope', '$log', '$routeParams', 'myService
     myService.name = $scope.pageName;
   });
 
+  $scope.person = {
+    name: 'Mr. John, Smith',
+    designation: 'Engineer',
+    address: '53, Jain street, Cross road',
+    city: 'New York',
+    state: 'NY',
+    zip: '231670'
+  };
+
+  $scope.formattedAddr = function(person) {
+    return person.address + ', ' + person.city + ', ' + person.state + ', ' + person.zip + '.'
+  };
+
 }]);
 
 // directives
@@ -157,7 +170,12 @@ app.directive('searchResult', function() {
   return {
     restrict: 'AECM',
     templateUrl: 'directives/searchResult.html',
-    replace: true
+    replace: true,
+    scope: {
+      personName: '@', // @ is for string interpoation
+      personObj: '=', // = is for object, it's two way binding
+      formattedAddFn: '&' // & is for function
+    }
   };
 });
 

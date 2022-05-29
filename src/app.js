@@ -203,7 +203,41 @@ app.directive('searchResult', function() {
       personName: '@', // @ is for string interpoation
       personObj: '=', // = is for object, it's two way binding
       formattedAddFn: '&' // & is for function
-    }
+    },
+    // // with compile
+    // compile: function(el, atr) {
+    //   console.log('Compiling...'); // will compile one time
+    //   console.log('element ', el);
+    //   console.log(el.html());
+    //   console.log('attribute ', atr);
+    //   // el.removeAttr('class'); // will remove all the class from the element
+
+    //   // pre and post link will run for each elements. pre will check for nested directives(directive inside directive in html) also after linking one directive.
+    //   // after pre, post will run, so doing everything at post is safe.
+
+    //   return {
+    //     pre: function(scope, elements, attributes) {
+    //       console.log('pre-linking...');
+    //       console.log(scope, elements, attributes);
+    //     },
+    //     post: function(scope, elements, attributes) {
+    //       console.log('post-linking...');
+    //       console.log(scope, elements, attributes);
+
+    //       if(scope.personName == 'Mrs. Kate, Smith') {
+    //         elements.removeAttr('class');
+    //       }
+    //     }
+    //   };
+    // }
+    // without compile, as we won't do anything in compile and pre-linking
+    link: function(scope, elements, attributes) {
+      console.log('linking...');
+      if(scope.personName == 'Mrs. Kate, Smith') {
+        elements.removeAttr('class');
+      }
+    },
+    transclude: true
   };
 });
 

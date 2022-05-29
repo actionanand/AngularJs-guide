@@ -2,4 +2,8 @@
   <h3 class="list-group-item-heading"> {{personName}} </h3>
   <h4 class="list-group-item-heading"> {{personObj.designation}} </h4>
   <p class="list-group-item-text"> {{ formattedAddFn({myPerson: personObj}) }} </p>
+  <small>
+    <ng-transclude></ng-transclude>
+  </small>
+  <small ng-transclude></small>
 </a>

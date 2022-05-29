@@ -8,9 +8,15 @@
 <input type="text" ng-model="pageName">
 
 <hr>
-<div>
+<div class="list-group">
   <search-result person-name="{{person.name}}" person-obj="person" formatted-add-fn="formattedAddr(myPerson)"></search-result>
   <div search-result person-obj="person" person-name="{{person.name}}"></div>
   <div class="search-result" person-obj="person" person-name="{{person.name}}"></div>
   <!-- directive:searchResult -->
 </div>
+<hr>
+<h4>Displayed using loop</h4>
+<div class="list-group" ng-repeat="person in people">
+  <search-result person-name="{{person.name}}" person-obj="person" formatted-add-fn="formattedAddr(myPerson)"></search-result>
+</div>
+<hr>

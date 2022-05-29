@@ -236,7 +236,8 @@ app.directive('searchResult', function() {
       if(scope.personName == 'Mrs. Kate, Smith') {
         elements.removeAttr('class');
       }
-    }
+    },
+    transclude: true
   };
 });
 

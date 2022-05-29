@@ -149,6 +149,47 @@ app.controller('secondController', ['$scope', '$log', '$routeParams', 'myService
     myService.name = $scope.pageName;
   });
 
+  $scope.person = {
+    name: 'Mr. James, Swordswith',
+    designation: 'Law and Order',
+    address: '27, maxian street, beach road',
+    city: 'Detroit',
+    state: 'Michigan',
+    zip: '48203'
+  };
+
+  $scope.people = [
+    {
+      name: 'Mr. John, Smith',
+      designation: 'Engineer',
+      address: '53, Jain street, Cross road',
+      city: 'New York',
+      state: 'NY',
+      zip: '231670'
+    },
+    {
+      name: 'Mrs. Kate, Smith',
+      designation: 'Teacher',
+      address: '53, Jain street, Cross road',
+      city: 'New York',
+      state: 'NY',
+      zip: '231670'
+    },
+    {
+      name: 'Mr. Paul, Daniel',
+      designation: 'Lawyer',
+      address: '13, salmon street, mount road',
+      city: 'Jercy',
+      state: 'NY',
+      zip: '231673'
+    },
+  ];
+
+
+  $scope.formattedAddr = function(person) {
+    return person.address + ', ' + person.city + ', ' + person.state + ', ' + person.zip + '.'
+  };
+
 }]);
 
 // directives
@@ -157,7 +198,12 @@ app.directive('searchResult', function() {
   return {
     restrict: 'AECM',
     templateUrl: 'directives/searchResult.html',
-    replace: true
+    replace: true,
+    scope: {
+      personName: '@', // @ is for string interpoation
+      personObj: '=', // = is for object, it's two way binding
+      formattedAddFn: '&' // & is for function
+    }
   };
 });
 

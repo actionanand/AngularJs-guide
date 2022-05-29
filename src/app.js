@@ -22,9 +22,19 @@ app.config(['$routeProvider', function ($routeProvider){
 
 }]);
 
+// service
+
+app.service('myService', function(){
+  var self = this;
+  this.name = 'AngularJs';
+  this.nameLength = function() {
+    return self.name.length;
+  };
+});
+
 
 // CONTROLLERS
-app.controller('mainController', ['$scope', '$log', '$filter', '$timeout', '$http', function ($scope, $log, $filter, $timeout, $http) {
+app.controller('mainController', ['$scope', '$log', '$filter', '$timeout', '$http', 'myService', function ($scope, $log, $filter, $timeout, $http, myService) {
   $scope.name = 'Anand Raja';
   
   $scope.filteredText = $filter('uppercase')($scope.name);
@@ -120,11 +130,25 @@ app.controller('mainController', ['$scope', '$log', '$filter', '$timeout', '$htt
     $scope.newRule = '';
   }
 
+  // accessing services
+  $scope.pageName = myService.name;
+
+  $scope.$watch('pageName', function() {
+    myService.name = $scope.pageName;
+  });
+
 }]);
 
-app.controller('secondController', ['$scope', '$log', '$routeParams', function($scope, $log, $routeParams) {
+app.controller('secondController', ['$scope', '$log', '$routeParams', 'myService', function($scope, $log, $routeParams, myService) {
   $scope.name = $routeParams.id || 'default page';
-  $log.log($scope.name);
+  $log.log(myService.name);
+
+  $scope.pageName = myService.name;
+
+  $scope.$watch('pageName', function() {
+    myService.name = $scope.pageName;
+  });
+
 }]);
 
 var searchPeople = function(firstName, lastName, Height, age, occupation) {

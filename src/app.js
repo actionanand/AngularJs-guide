@@ -151,6 +151,16 @@ app.controller('secondController', ['$scope', '$log', '$routeParams', 'myService
 
 }]);
 
+// directives
+
+app.directive('searchResult', function() {
+  return {
+    restrict: 'AECM',
+    templateUrl: 'directives/searchResult.html',
+    replace: true
+  };
+});
+
 var searchPeople = function(firstName, lastName, Height, age, occupation) {
   return 'Anand Raja';
 };
